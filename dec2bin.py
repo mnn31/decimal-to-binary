@@ -3,23 +3,29 @@
 ## Converts the inputted decimal number to binary
 ###############################################################
 
+
 def dec2bin(dec):
-    bits = []
 
-    bit0 = dec % 2
-    bits.insert(0, bit0)
-    dec = int(dec/2)
-    bit1 = dec % 2
-    bits.insert(0, bit1)
-    dec = int(dec/2)
-    bit2 = dec % 2
-    bits.insert(0, bit2)
+    #collect each bit into a string called 'bits'
+    if dec == 0:
+        bits = ['0']
+    else:
+        bits = []
 
-    return bits
-    
+    while dec != 0:
+        bit0 = dec % 2 #extract lsb (least significant bit)
+        bits.insert(0, str(bit0)) #insert lsb at beginning of list
+        dec = int(dec/2) #remove lsb
 
-#dec = int(input('Enter a decimal number: '))
-for dec in range(20):
+    str1 = ''.join(bits)
+    return str1
+
+
+########################## MAIN PROGRAM ##########################
+min1 = int(input("Enter a minimum decimal number: "))
+max1 = int(input("Enter a maximum decimal number: "))
+           
+for dec in range(min1, max1):
     binary = dec2bin(dec)
     print(f'{dec} --> {binary}')
     
